@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EONIX // أيونكس — Drop 01: INNIT Collection</title>
+  <meta name="description" content="EONIX Streetwear — Heavyweight elemental silhouettes crafted for the underground. Shop Drop 01: INNIT." />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Space Grotesk (Display) & JetBrains Mono (Technical Labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#09090b',
+            charcoal: '#121215',
+            ash: '#27272a',
+            bone: '#f4f4f5',
+            crimson: '#e11d48',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #09090b;
+      color: #f4f4f5;
+      overflow-x: hidden;
+    }
+    /* Custom subtle grid background */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+    /* Marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-crimson selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT TICKER -->
+  <div class="bg-bone text-obsidian py-2 overflow-hidden border-b border-ash font-mono text-xs uppercase tracking-widest">
+    <div class="animate-marquee">
+      <span class="mx-6">⚡ DROP 01: "INNIT" ELEMENTAL CAPSULE NOW LIVE</span>
+      <span class="mx-6">•</span>
+      <span class="mx-6">480 GSM HEAVYWEIGHT EGYPTIAN COTTON</span>
+      <span class="mx-6">•</span>
+      <span class="mx-6">LIMITED RUN // NO RESTOCKS</span>
+      <span class="mx-6">•</span>
+      <span class="mx-6">DIRECT WHATSAPP DISPATCH & INSTAPAY / COD AVAILABLE</span>
+      <span class="mx-6">•</span>
+      <span class="mx-6">⚡ DROP 01: "INNIT" ELEMENTAL CAPSULE NOW LIVE</span>
+      <span class="mx-6">•</span>
+      <span class="mx-6">480 GSM HEAVYWEIGHT EGYPTIAN COTTON</span>
+      <span class="mx-6">•</span>
+      <span class="mx-6">LIMITED RUN // NO RESTOCKS</span>
+      <span class="mx-6">•</span>
+      <span class="mx-6">DIRECT WHATSAPP DISPATCH & INSTAPAY / COD AVAILABLE</span>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-obsidian/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <span class="text-2xl sm:text-3xl font-bold tracking-tighter text-bone group-hover:text-crimson transition-colors">EONIX</span>
+        <span class="font-mono text-xs px-2 py-0.5 bg-white/10 text-bone/80 border border-white/15">أيونكس</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-bone/70">
+        <a href="#lookbook" class="hover:text-bone transition-colors">[01. Lookbook & Shop]</a>
+        <a href="#lore" class="hover:text-bone transition-colors">[02. Brand Lore]</a>
+        <a href="#specs" class="hover:text-bone transition-colors">[03. Craft Specs]</a>
+        <a href="#faq" class="hover:text-bone transition-colors">[04. Dispatch FAQ]</a>
+      </nav>
+
+      <!-- Bag Trigger & Mobile Menu Button -->
+      <div class="flex items-center gap-4">
+        <button onclick="toggleCart(true)" class="relative flex items-center gap-2 bg-bone text-obsidian px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider hover:bg-crimson hover:text-white transition-all">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span>Bag</span>
+          <span id="cart-count" class="bg-obsidian text-bone px-1.5 py-0.5 text-[10px]">0</span>
+        </button>
+
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 border border-white/20 text-bone hover:border-bone">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-b border-white/10 px-4 pt-3 pb-6 space-y-3 font-mono text-xs uppercase tracking-widest">
+      <a href="#lookbook" onclick="toggleMobileMenu()" class="block py-2 text-bone/80 hover:text-white">[01. Lookbook & Shop]</a>
+      <a href="#lore" onclick="toggleMobileMenu()" class="block py-2 text-bone/80 hover:text-white">[02. Brand Lore]</a>
+      <a href="#specs" onclick="toggleMobileMenu()" class="block py-2 text-bone/80 hover:text-white">[03. Craft Specs]</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-bone/80 hover:text-white">[04. Dispatch FAQ]</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative min-h-[85vh] flex items-center bg-grid border-b border-white/10 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent z-10"></div>
+    
+    <!-- Background Editorial Visual -->
+    <img 
+      src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1800&q=80" 
+      alt="EONIX Streetwear Lookbook Hero" 
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105"
+    />
+
+    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-crimson/50 bg-crimson/10 text-crimson font-mono text-xs uppercase tracking-widest">
+          <span class="w-2 h-2 rounded-full bg-crimson animate-pulse"></span>
+          Archive Capsule 001 // "INNIT"
+        </div>
+
+        <h1 class="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tighter uppercase leading-[0.92] mb-6">
+          Forged In <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-bone via-bone to-white/40">Raw Elements.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-bone/75 max-w-xl mb-10 leading-relaxed">
+          EONIX (أيونكس) bridges industrial street silhouettes with elemental mythology. Drop 01: <strong class="text-white font-normal">"INNIT"</strong> is an architectural study in heavyweight cotton, distressed washes, and utilitarian armor.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#lookbook" class="inline-flex items-center gap-3 bg-bone text-obsidian px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-crimson hover:text-white transition-all">
+            <span>Explore Drop 01</span>
+            <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#lore" class="inline-flex items-center gap-3 border border-white/25 bg-obsidian/60 backdrop-blur-sm text-bone px-8 py-4 font-mono text-xs uppercase tracking-widest hover:border-bone transition-all">
+            <span>Read The Lore</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Technical Corner Metadata -->
+      <div class="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-bone/60">
+        <div>
+          <span class="block text-bone/40">COLLECTION</span>
+          <span class="text-bone font-bold">01 // "INNIT"</span>
+        </div>
+        <div>
+          <span class="block text-bone/40">FABRIC WEIGHT</span>
+          <span class="text-bone font-bold">320 — 480 GSM</span>
+        </div>
+        <div>
+          <span class="block text-bone/40">ORIGIN</span>
+          <span class="text-bone font-bold">CAIRO // UNDERGROUND</span>
+        </div>
+        <div>
+          <span class="block text-bone/40">ORDER CHANNEL</span>
+          <span class="text-crimson font-bold">DIRECT WHATSAPP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE LOOKBOOK & SHOP SECTION -->
+  <section id="lookbook" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-crimson mb-2">// 01. Interactive Lookbook & Archive</p>
+        <h2 class="text-4xl sm:text-5xl font-bold tracking-tight uppercase">Drop 01: "INNIT"</h2>
+      </div>
+
+      <!-- Element Filter Buttons -->
+      <div class="flex flex-wrap gap-2 font-mono text-xs" id="filter-container">
+        <button onclick="filterProducts('all')" data-filter="all" class="filter-btn bg-bone text-obsidian px-4 py-2 uppercase tracking-wider font-bold transition-all">
+          All Elements (6)
+        </button>
+        <button onclick="filterProducts('ignis')" data-filter="ignis" class="filter-btn border border-white/15 text-bone/70 hover:text-bone px-4 py-2 uppercase tracking-wider transition-all">
+          Ignis // Fire
+        </button>
+        <button onclick="filterProducts('terra')" data-filter="terra" class="filter-btn border border-white/15 text-bone/70 hover:text-bone px-4 py-2 uppercase tracking-wider transition-all">
+          Terra // Earth
+        </button>
+        <button onclick="filterProducts('aether')" data-filter="aether" class="filter-btn border border-white/15 text-bone/70 hover:text-bone px-4 py-2 uppercase tracking-wider transition-all">
+          Aether // Void
+        </button>
+      </div>
+    </div>
+
+    <!-- Product / Lookbook Grid (Populated via JS) -->
+    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </section>
+
+  <!-- BRAND LORE SECTION -->
+  <section id="lore" class="py-24 bg-charcoal border-y border-white/10 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Visual Editorial Collage -->
+        <div class="lg:col-span-6 relative">
+          <div class="aspect-[4/5] border border-white/15 overflow-hidden bg-obsidian">
+            <img 
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80" 
+              alt="EONIX Brand Lore Editorial" 
+              class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+            />
+          </div>
+          <div class="hidden sm:block absolute -bottom-6 -right-6 bg-obsidian border border-white/20 p-5 max-w-xs font-mono text-xs">
+            <p class="text-crimson font-bold mb-1">MANIFESTO LOG // 001</p>
+            <p class="text-bone/70">"Before structure, there was friction. We don't print clothes—we cast armor for the concrete shift."</p>
+          </div>
+        </div>
+
+        <!-- Right Column: Lore Narrative -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-block font-mono text-xs uppercase tracking-widest px-3 py-1 bg-white/5 border border-white/10 text-crimson">
+            // 02. The EONIX Worldview
+          </div>
+          
+          <h2 class="text-4xl sm:text-5xl font-bold tracking-tight uppercase leading-none">
+            Why "INNIT"? <br />
+            <span class="text-bone/50">The First Spark.</span>
+          </h2>
+
+          <p class="text-bone/80 leading-relaxed">
+            Born out of late-night creative shifts and the raw pulse of Cairo’s underground, <strong class="text-white">EONIX (أيونكس)</strong> was built on a single premise: streetwear shouldn't feel disposable. Every garment exists inside an evolving narrative where primordial elements collide with modern brutalism.
+          </p>
+
+          <p class="text-bone/70 leading-relaxed">
+            Our inaugural capsule, <strong class="text-white">"INNIT"</strong> (a double nod to <em>initialization</em> and unapologetic street vernacular), strips away loud, meaningless logos. Instead, it focuses on drop-shoulder boxy architecture, sun-faded mineral washes, and high-density puff and plastisol prints that age with character.
+          </p>
+
+          <!-- Elemental Pillars -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+            <div class="p-4 bg-obsidian border border-white/10">
+              <span class="font-mono text-xs text-crimson block mb-1">01 // IGNIS</span>
+              <h3 class="font-bold uppercase text-sm mb-1">Thermal Distress</h3>
+              <p class="text-xs text-bone/60">Acid-washed finishes and cracked graphic textures inspired by volcanic ash.</p>
+            </div>
+            <div class="p-4 bg-obsidian border border-white/10">
+              <span class="font-mono text-xs text-crimson block mb-1">02 // TERRA</span>
+              <h3 class="font-bold uppercase text-sm mb-1">Heavy Armor</h3>
+              <p class="text-xs text-bone/60">480 GSM combed Egyptian cotton fleece engineered to hold a structured silhouette.</p>
+            </div>
+            <div class="p-4 bg-obsidian border border-white/10">
+              <span class="font-mono text-xs text-crimson block mb-1">03 // AETHER</span>
+              <h3 class="font-bold uppercase text-sm mb-1">Zero-Noise Cut</h3>
+              <p class="text-xs text-bone/60">Cropped body lengths with elongated sleeves for effortless layering.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFT & SIZING SPECS -->
+  <section id="specs" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/10">
+    <div class="mb-12">
+      <p class="font-mono text-xs uppercase tracking-widest text-crimson mb-2">// 03. Technical Specifications</p>
+      <h2 class="text-3xl sm:text-4xl font-bold uppercase tracking-tight">Boxy Fit Size Matrix</h2>
+    </div>
+
+    <div class="overflow-x-auto border border-white/15">
+      <table class="w-full text-left font-mono text-xs sm:text-sm">
+        <thead class="bg-white/5 text-bone uppercase border-b border-white/15">
+          <tr>
+            <th class="py-4 px-6">Size</th>
+            <th class="py-4 px-6">Chest Width (cm)</th>
+            <th class="py-4 px-6">Body Length (cm)</th>
+            <th class="py-4 px-6">Sleeve Drop (cm)</th>
+            <th class="py-4 px-6">Recommended Height</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/10 text-bone/80">
+          <tr class="hover:bg-white/5">
+            <td class="py-4 px-6 font-bold text-white">S</td>
+            <td class="py-4 px-6">60 cm</td>
+            <td class="py-4 px-6">67 cm</td>
+            <td class="py-4 px-6">58 cm</td>
+            <td class="py-4 px-6">165 – 172 cm</td>
+          </tr>
+          <tr class="hover:bg-white/5">
+            <td class="py-4 px-6 font-bold text-white">M</td>
+            <td class="py-4 px-6">63 cm</td>
+            <td class="py-4 px-6">70 cm</td>
+            <td class="py-4 px-6">60 cm</td>
+            <td class="py-4 px-6">172 – 178 cm</td>
+          </tr>
+          <tr class="hover:bg-white/5">
+            <td class="py-4 px-6 font-bold text-white">L</td>
+            <td class="py-4 px-6">66 cm</td>
+            <td class="py-4 px-6">73 cm</td>
+            <td class="py-4 px-6">62 cm</td>
+            <td class="py-4 px-6">178 – 185 cm</td>
+          </tr>
+          <tr class="hover:bg-white/5">
+            <td class="py-4 px-6 font-bold text-white">XL</td>
+            <td class="py-4 px-6">69 cm</td>
+            <td class="py-4 px-6">76 cm</td>
+            <td class="py-4 px-6">64 cm</td>
+            <td class="py-4 px-6">185+ cm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4 font-mono text-xs text-bone/50">* All EONIX tops are pre-shrunk and cut with an intentional oversized drop-shoulder fit. Take your true size for a boxy drape, or size down for a standard fit.</p>
+  </section>
+
+  <!-- DISPATCH FAQ SECTION -->
+  <section id="faq" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="font-mono text-xs uppercase tracking-widest text-crimson mb-2">// 04. Direct Dispatch Protocol</p>
+      <h2 class="text-3xl sm:text-4xl font-bold uppercase tracking-tight">How WhatsApp Ordering Works</h2>
+    </div>
+
+    <div class="space-y-4 font-mono text-sm">
+      <div class="border border-white/15 bg-charcoal p-6">
+        <h3 class="font-bold text-white uppercase mb-2">1. Select Your Pieces & Sizes</h3>
+        <p class="text-bone/70 font-sans">Browse the Drop 01 lookbook above, choose your size (S–XL), and click <strong>Add to Bag</strong>. You can mix multiple pieces in a single order.</p>
+      </div>
+      <div class="border border-white/15 bg-charcoal p-6">
+        <h3 class="font-bold text-white uppercase mb-2">2. Generate Your Instant Order Ticket</h3>
+        <p class="text-bone/70 font-sans">Open your Bag, enter your name, delivery neighborhood/city, and preferred payment method (Cash on Delivery or InstaPay), then press <strong>Order via WhatsApp</strong>.</p>
+      </div>
+      <div class="border border-white/15 bg-charcoal p-6">
+        <h3 class="font-bold text-white uppercase mb-2">3. Fast Confirmation & Courier Dispatch</h3>
+        <p class="text-bone/70 font-sans">Your message arrives pre-formatted on our official WhatsApp line. We confirm stock immediately and dispatch within 24–48 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-white/10 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-2xl font-bold tracking-tighter">EONIX</span>
+          <span class="font-mono text-xs px-2 py-0.5 bg-white/10 text-bone/80">أيونكس</span>
+        </div>
+        <p class="font-mono text-xs text-bone/50">DROP 01: "INNIT" // ALL RIGHTS RESERVED © 2026</p>
+      </div>
+
+      <div class="flex items-center gap-6 font-mono text-xs uppercase tracking-widest">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="text-bone/70 hover:text-crimson transition-colors">Instagram</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="text-bone/70 hover:text-crimson transition-colors">TikTok</a>
+        <button onclick="toggleCart(true)" class="text-crimson font-bold hover:underline">Open Bag</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LOOKBOOK QUICK-VIEW MODAL -->
+  <div id="lookbook-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-sm p-4">
+    <div class="bg-charcoal border border-white/20 max-w-3xl w-full grid grid-cols-1 md:grid-cols-2 overflow-hidden relative">
+      <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-obsidian/80 text-bone p-2 border border-white/20 hover:border-crimson">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="aspect-[4/5] bg-obsidian">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+      </div>
+      <div class="p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <span id="modal-element" class="font-mono text-xs uppercase tracking-widest text-crimson block mb-2"></span>
+          <h3 id="modal-title" class="text-2xl font-bold uppercase tracking-tight mb-2"></h3>
+          <p id="modal-price" class="font-mono text-lg text-bone/90 mb-4"></p>
+          <p id="modal-desc" class="text-sm text-bone/70 leading-relaxed mb-6"></p>
+          <div class="border-t border-white/10 pt-4 mb-6 font-mono text-xs text-bone/60 space-y-1">
+            <p id="modal-spec"></p>
+            <p>FIT: Oversized Drop-Shoulder Boxy Cut</p>
+          </div>
+        </div>
+        <button id="modal-add-btn" class="w-full bg-bone text-obsidian py-3.5 font-mono text-xs font-bold uppercase tracking-widest hover:bg-crimson hover:text-white transition-all">
+          Add Size M To Bag
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE-OVER WHATSAPP BAG DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <!-- Backdrop -->
+    <div onclick="toggleCart(false)" class="absolute inset-0 bg-black/75 backdrop-blur-xs"></div>
+
+    <!-- Drawer Panel -->
+    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-charcoal border-l border-white/15 flex flex-col justify-between z-10">
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-crimson"></i>
+          <h3 class="font-mono text-sm font-bold uppercase tracking-widest">Your Dispatch Bag</h3>
+        </div>
+        <button onclick="toggleCart(false)" class="p-1.5 text-bone/60 hover:text-white border border-white/10">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Bag Items List -->
+      <div id="cart-items" class="p-6 overflow-y-auto flex-1 space-y-4"></div>
+
+      <!-- Checkout Form & WhatsApp Button -->
+      <div class="p-6 border-t border-white/10 bg-obsidian space-y-4">
+        <div class="flex items-center justify-between font-mono text-sm">
+          <span class="text-bone/60 uppercase">Subtotal</span>
+          <span id="cart-total" class="text-lg font-bold text-white">0 EGP</span>
+        </div>
+
+        <div class="space-y-3 pt-2">
+          <input 
+            id="cust-name" 
+            type="text" 
+            placeholder="Your Full Name *" 
+            class="w-full bg-charcoal border border-white/15 px-3.5 py-2.5 text-sm text-white placeholder:text-bone/40 focus:outline-none focus:border-crimson"
+          />
+          <input 
+            id="cust-address" 
+            type="text" 
+            placeholder="Delivery Area / Street Address (e.g., New Cairo) *" 
+            class="w-full bg-charcoal border border-white/15 px-3.5 py-2.5 text-sm text-white placeholder:text-bone/40 focus:outline-none focus:border-crimson"
+          />
+          <select 
+            id="cust-payment" 
+            class="w-full bg-charcoal border border-white/15 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-crimson font-mono text-xs"
+          >
+            <option value="Cash on Delivery (COD)">Payment: Cash on Delivery (COD)</option>
+            <option value="InstaPay Transfer">Payment: InstaPay Transfer</option>
+          </select>
+        </div>
+
+        <button 
+          onclick="checkoutWhatsApp()" 
+          class="w-full bg-crimson text-white py-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-obsidian transition-all flex items-center justify-center gap-2"
+        >
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Send Order via WhatsApp</span>
+        </button>
+        <p class="text-[11px] font-mono text-center text-bone/40">Zero checkout fees • Opens directly in WhatsApp</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT -->
+  <script>
+    // =========================================================================
+    // 1. CONFIGURE YOUR WHATSAPP NUMBER HERE (Include country code, no '+' sign)
+    // =========================================================================
+    const BRAND_WHATSAPP_NUMBER = "201003268335";
+
+    // =========================================================================
+    // 2. DROP 01 "INNIT" PRODUCT CATALOG DATA
+    // =========================================================================
+    const products = [
+      {
+        id: "eonix-01",
+        title: "INNIT // Ignis Heavy Hoodie",
+        element: "ignis",
+        elementLabel: "IGNIS // FIRE",
+        price: 1650,
+        spec: "480 GSM Brushed Egyptian Fleece • Acid Charcoal Wash",
+        desc: "Constructed from ultra-dense 480 GSM cotton with an artisanal enzyme mineral wash. Features distressed ribbing, a double-lined architectural hood, and high-density cracked chest typography.",
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "eonix-02",
+        title: "INNIT // Terra Parachute Cargo",
+        element: "terra",
+        elementLabel: "TERRA // EARTH",
+        price: 1450,
+        spec: "310 GSM Ripstop Cotton Twill • 8-Pocket Utility",
+        desc: "Wide-leg tactical silhouette featuring articulated knee pleats, adjustable ankle drawcords, and matte oxidized metal hardware.",
+        image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "eonix-03",
+        title: "INNIT // Aether Boxy Graphic Tee",
+        element: "aether",
+        elementLabel: "AETHER // VOID",
+        price: 850,
+        spec: "320 GSM Heavy Jersey • Puff & Plastisol Back Print",
+        desc: "Cut with a thick 1.2-inch ribbed collar that never loses shape. Showcases the signature EONIX elemental sigil in tactile puff ink across the upper back.",
+        image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "eonix-04",
+        title: "INNIT // Ignis Thermal Zip Workshirt",
+        element: "ignis",
+        elementLabel: "IGNIS // FIRE",
+        price: 1800,
+        spec: "420 GSM Washed Duck Canvas • Two-Way Metal Zipper",
+        desc: "Engineered as an outer armor layer. Features contrast triple-needle stitching, welt hand pockets, and an embroidered Arabic/Latin EONIX crest.",
+        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "eonix-05",
+        title: "INNIT // Terra Raw-Hem Sweatpant",
+        element: "terra",
+        elementLabel: "TERRA // EARTH",
+        price: 1300,
+        spec: "460 GSM Loopback French Terry • Unfinished Flare Hem",
+        desc: "Straight-leg heavy loungewear designed to stack cleanly over chunky footwear. Finished with deepwelt pockets and an internal drawcord.",
+        image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=900&q=80"
+      },
+      {
+        id: "eonix-06",
+        title: "INNIT // Aether Distressed Cap",
+        element: "aether",
+        elementLabel: "AETHER // VOID",
+        price: 550,
+        spec: "Heavy Bull Denim • Hand-Frayed Brim • 3D Embroidery",
+        desc: "Low-profile 6-panel crown treated with a vintage sun-fade wash and tonal 3D EONIX typography on the front crown.",
+        image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=900&q=80"
+      }
+    ];
+
+    let cart = [];
+    let selectedSizes = {};
+
+    // Initialize default selected sizes to 'M'
+    products.forEach(p => selectedSizes[p.id] = 'M');
+
+    // =========================================================================
+    // 3. RENDER LOOKBOOK GRID
+    // =========================================================================
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById('product-grid');
+      const filtered = filter === 'all' ? products : products.filter(p => p.element === filter);
+
+      grid.innerHTML = filtered.map(product => `
+        <article class="group bg-charcoal border border-white/10 flex flex-col justify-between overflow-hidden hover:border-white/30 transition-all">
+          <div>
+            <!-- Image Container -->
+            <div class="relative aspect-[4/5] bg-obsidian overflow-hidden">
+              <img 
+                src="${product.image}" 
+                alt="${product.title}" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              />
+              <span class="absolute top-3 left-3 bg-obsidian/90 border border-white/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-crimson">
+                ${product.elementLabel}
+              </span>
+              <button 
+                onclick="openModal('${product.id}')" 
+                class="absolute bottom-3 right-3 bg-obsidian/90 text-bone border border-white/20 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider opacity-90 hover:bg-bone hover:text-obsidian transition-colors"
+              >
+                + Quick Look
+              </button>
+            </div>
+
+            <!-- Product Info -->
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="text-lg font-bold uppercase tracking-tight">${product.title}</h3>
+                <span class="font-mono text-sm font-bold text-bone whitespace-nowrap">${product.price} EGP</span>
+              </div>
+              <p class="font-mono text-[11px] text-bone/50 mb-4">${product.spec}</p>
+            </div>
+          </div>
+
+          <!-- Size Selector & Add to Bag -->
+          <div class="p-5 pt-0 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[11px] uppercase text-bone/60">Select Size:</span>
+              <div class="flex gap-1.5" id="sizes-${product.id}">
+                ${['S', 'M', 'L', 'XL'].map(size => `
+                  <button 
+                    onclick="selectSize('${product.id}', '${size}')"
+                    class="w-8 h-8 font-mono text-xs border transition-colors ${selectedSizes[product.id] === size ? 'bg-bone text-obsidian font-bold border-bone' : 'border-white/15 text-bone/70 hover:border-white/40'}"
+                  >
+                    ${size}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <button 
+              onclick="addToCart('${product.id}')"
+              class="w-full bg-white/10 border border-white/20 text-bone py-3 font-mono text-xs font-bold uppercase tracking-widest hover:bg-crimson hover:border-crimson hover:text-white transition-all"
+            >
+              + Add To Bag
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    // Filter button handler
+    function filterProducts(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.className = "filter-btn bg-bone text-obsidian px-4 py-2 uppercase tracking-wider font-bold transition-all";
+        } else {
+          btn.className = "filter-btn border border-white/15 text-bone/70 hover:text-bone px-4 py-2 uppercase tracking-wider transition-all";
+        }
+      });
+      renderProducts(category);
+    }
+
+    // Select size for a product card
+    function selectSize(productId, size) {
+      selectedSizes[productId] = size;
+      const activeFilter = document.querySelector('.filter-btn.bg-bone')?.dataset.filter || 'all';
+      renderProducts(activeFilter);
+    }
+
+    // =========================================================================
+    // 4. QUICK-VIEW LOOKBOOK MODAL
+    // =========================================================================
+    function openModal(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      document.getElementById('modal-img').src = product.image;
+      document.getElementById('modal-img').alt = product.title;
+      document.getElementById('modal-element').textContent = product.elementLabel;
+      document.getElementById('modal-title').textContent = product.title;
+      document.getElementById('modal-price').textContent = `${product.price} EGP`;
+      document.getElementById('modal-desc').textContent = product.desc;
+      document.getElementById('modal-spec').textContent = `SPEC: ${product.spec}`;
+
+      const chosenSize = selectedSizes[productId] || 'M';
+      const addBtn = document.getElementById('modal-add-btn');
+      addBtn.textContent = `Add Size ${chosenSize} To Bag — ${product.price} EGP`;
+      addBtn.onclick = () => {
+        addToCart(productId);
+        closeModal();
+      };
+
+      const modal = document.getElementById('lookbook-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('lookbook-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // =========================================================================
+    // 5. SHOPPING BAG & WHATSAPP DISPATCH LOGIC
+    // =========================================================================
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const size = selectedSizes[productId] || 'M';
+      const existing = cart.find(item => item.id === productId && item.size === size);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          size: size,
+          image: product.image,
+          qty: 1
+        });
+      }
+
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById('cart-count');
+      const itemsEl = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      countEl.textContent = totalCount;
+      totalEl.textContent = `${totalPrice.toLocaleString()} EGP`;
+
+      if (cart.length === 0) {
+        itemsEl.innerHTML = `
+          <div class="text-center py-16 font-mono text-xs text-bone/40">
+            <p class="mb-2 uppercase">Your dispatch bag is empty.</p>
+            <p>Select pieces from Drop 01: "INNIT" to build your order.</p>
+          </div>
+        `;
+        return;
+      }
+
+      itemsEl.innerHTML = cart.map((item, idx) => `
+        <div class="flex gap-4 bg-obsidian p-3 border border-white/10">
+          <img src="${item.image}" alt="${item.title}" class="w-16 h-20 object-cover" />
+          <div class="flex-1">
+            <h4 class="text-xs font-bold uppercase">${item.title}</h4>
+            <p class="font-mono text-[11px] text-crimson mt-0.5">Size: ${item.size} • ${item.price} EGP</p>
+            <div class="flex items-center gap-3 mt-3 font-mono text-xs">
+              <button onclick="changeQty(${idx}, -1)" class="w-6 h-6 border border-white/20 hover:border-white">-</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${idx}, 1)" class="w-6 h-6 border border-white/20 hover:border-white">+</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleCart(open) {
+      const drawer = document.getElementById('cart-drawer');
+      if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert("Your bag is empty! Add at least one piece from the lookbook first.");
+        return;
+      }
+
+      const name = document.getElementById('cust-name').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+      const payment = document.getElementById('cust-payment').value;
+
+      if (!name || !address) {
+        alert("Please enter your full name and delivery address so we can prepare your dispatch.");
+        return;
+      }
+
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      let message = `⚡ *NEW EONIX ORDER — DROP 01: INNIT* ⚡\n\n`;
+      message += `*Customer:* ${name}\n`;
+      message += `*Delivery Address:* ${address}\n`;
+      message += `*Payment Method:* ${payment}\n\n`;
+      message += `*Ordered Pieces:*\n`;
+
+      cart.forEach((item, i) => {
+        message += `${i + 1}. ${item.title} (Size: ${item.size}) x${item.qty} — ${item.price * item.qty} EGP\n`;
+      });
+
+      message += `\n*TOTAL ORDER VALUE:* ${totalPrice.toLocaleString()} EGP\n`;
+      message += `----------------------------------\n`;
+      message += `Please confirm stock availability and delivery timeline.`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${BRAND_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Initialize Page
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts('all');
+      updateCartUI();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
